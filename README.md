@@ -53,3 +53,12 @@ Combines filtering, sorting, and pagination in a single request.
 * **Result**:
 
 ![Advanced Search](https://github.com/AzaanMP/BookApiApplication/blob/0e65e5ecb5ba88f8e091f90b04ebdce0ea8a840a/screenshots/CPSC%20449%20Homework%201%20Advanced%20Get.png)
+
+---
+
+## How to Run
+1. Clone the repository to your local machine.
+2. Open the project on IntelliJ.
+3. Ensure you have Maven installed and the dependencies are loaded.
+4. Run the `BookApiApplication.java` file.
+5. Use Postman or a browser to access the endpoints at `http://localhost:8080`.
