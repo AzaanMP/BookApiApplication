@@ -7,7 +7,7 @@
 
 ---
 
-## Endpoints & Testing Results
+## Assignment 1 Endpoints & Testing Results
 
 ### 1. Update Book (PUT)
 Replaces an existing book's details entirely.
