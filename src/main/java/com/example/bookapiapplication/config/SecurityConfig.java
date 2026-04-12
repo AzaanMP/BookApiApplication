@@ -9,10 +9,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-// Note: You may need to import your specific JwtAuthenticationFilter
-// depending on which package it is currently sitting in.
-// import com.example.bookapiapplication.security.JwtAuthenticationFilter;
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -35,10 +31,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
 
                         // ASSIGNMENT 2 REQUIREMENT: Only ADMIN can delete
-                        .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN")
+                        // Using hasAuthority instead of hasRole to avoid the "ROLE_" prefix issue
+                        .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasAuthority("ADMIN")
 
                         // Require at least USER role to create, update, or patch books
-                        .requestMatchers("/api/books/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/books/**").hasAnyAuthority("USER", "ADMIN")
 
                         // Any other request must be authenticated
                         .anyRequest().authenticated()
