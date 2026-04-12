@@ -1,10 +1,11 @@
 package com.example.bookapiapplication.controller;
 
 import com.example.bookapiapplication.model.Book;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,11 +63,16 @@ public class BookController {
         return book;
     }
 
-    // 3. DELETE
+    // 3. DELETE (UPDATED FOR ASSIGNMENT 2)
     @DeleteMapping("/books/{id}")
-    public String deleteBook(@PathVariable Long id) {
+    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
         boolean removed = books.removeIf(book -> book.getId().equals(id));
-        return removed ? "Book removed successfully" : "Book not found";
+
+        if (removed) {
+            return ResponseEntity.ok("Book deleted successfully"); // Returns 200 OK
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found"); // Returns 404
+        }
     }
 
     // 4. GET with Pagination
@@ -103,7 +109,7 @@ public class BookController {
                 .collect(Collectors.toList());
     }
 
-    // --- BASE ENDPOINTS (From Class) ---
+    // --- BASE ENDPOINTS ---
     @GetMapping("/books")
     public List<Book> getBooks() { return books; }
 
