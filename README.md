@@ -81,8 +81,7 @@ Registers a new user with both `USER` and `ADMIN` roles.
 * **URL**: `POST http://localhost:8080/api/auth/register`
 * **Result**: Returns a `200 OK` status and a success message.
 
-![Register ADMIN]
-(https://github.com/AzaanMP/BookApiApplication/blob/d0a8ee62e9ca11379e59a1c6c9c957bab6d07312/screenshots/Assignment-2-Screenshots/Register%20ADMIN.png)
+![Register ADMIN](https://github.com/AzaanMP/BookApiApplication/blob/7f73f193c8bf4ac29d847411583c0565527e9d99/screenshots/RegisterADMIN.png)
 
 ---
 
@@ -91,8 +90,7 @@ Authenticates the user credentials and returns a generated JWT token.
 * **URL**: `POST http://localhost:8080/api/auth/login`
 * **Result**: Returns a `200 OK` status with the JWT token in the response body.
 
-![Login ADMIN]
-(https://github.com/AzaanMP/BookApiApplication/blob/d0a8ee62e9ca11379e59a1c6c9c957bab6d07312/screenshots/Assignment-2-Screenshots/AdminLogin%20TOKEN.png)
+![Login ADMIN](https://github.com/AzaanMP/BookApiApplication/blob/7f73f193c8bf4ac29d847411583c0565527e9d99/screenshots/AdminLoginTOKEN.png)
 
 ---
 
@@ -101,22 +99,27 @@ Tests if an authenticated user with the `ADMIN` role can successfully delete a b
 * **URL**: `DELETE http://localhost:8080/api/books/1`
 * **Result**: Returns a `200 OK` status with the message "Book deleted successfully".
 
-![DELETE as ADMIN]
-(https://github.com/AzaanMP/BookApiApplication/blob/d0a8ee62e9ca11379e59a1c6c9c957bab6d07312/screenshots/Assignment-2-Screenshots/Admin%20Delete%20Book.png)
+![DELETE as ADMIN](https://github.com/AzaanMP/BookApiApplication/blob/d0a8ee62e9ca11379e59a1c6c9c957bab6d07312/screenshots/Assignment-2-Screenshots/Admin%20Delete%20Book.png)
 
 ---
 
-### 4. DELETE Request as USER (Must Fail)
+### 4. Repeat Steps 1 and 2 for User
+![Register USER](https://github.com/AzaanMP/BookApiApplication/blob/7f73f193c8bf4ac29d847411583c0565527e9d99/screenshots/RegisterUSER.png)
+
+![Login USER](https://github.com/AzaanMP/BookApiApplication/blob/7f73f193c8bf4ac29d847411583c0565527e9d99/screenshots/UserLoginTOKEN.png)
+
+---
+
+### 5. DELETE Request as USER (Must Fail)
 Tests role-based authorization by attempting to delete a book using a token from a newly registered user who *only* has the `USER` role.
 * **URL**: `DELETE http://localhost:8080/api/books/2`
 * **Result**: Returns a `403 Forbidden` status, proving the endpoint is successfully protected against non-admins.
 
-![DELETE as USER]
-(https://github.com/AzaanMP/BookApiApplication/blob/d0a8ee62e9ca11379e59a1c6c9c957bab6d07312/screenshots/Assignment-2-Screenshots/User%20Delete%20Book.png)
+![DELETE as USER](https://github.com/AzaanMP/BookApiApplication/blob/7f73f193c8bf4ac29d847411583c0565527e9d99/screenshots/UserDeleteBook.png)
 
 ## How to Run Assignment 2
 
-**⚠️ Important Note on Data Storage:** This project utilizes in-memory Java Lists to store both Books and Users rather than an external database. **All data resets every time the application is restarted.** If you restart the server, you must re-register your users and generate new JWT tokens!
+**Important Note on Data Storage:** This project utilizes in-memory Java Lists to store both Books and Users rather than an external database. **All data resets every time the application is restarted.** If you restart the server, you must re-register your users and generate new JWT tokens!
 
 1. **Start the Application:** Open the project in IntelliJ, ensure Maven dependencies are loaded, and run the `BookApiApplication.java` main class. The server will start on `http://localhost:8080`.
 
